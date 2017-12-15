@@ -1,0 +1,65 @@
+ .soi-list-title{
+    position: fixed;
+    top: 180px;
+    box-sizing: border-box;
+    width: 94%;
+    height: 60px;
+    line-height: 60px;
+    background: -webkit-linear-gradient(left, #cfd6e2,#ddd);
+    background: -moz-linear-gradient(left, #cfd6e2,#ddd);
+    background: -o-linear-gradient(left, #cfd6e2,#ddd);
+    background: -ms-linear-gradient(left, #cfd6e2,#ddd);
+    background: linear-gradient(left, #cfd6e2,#ddd);
+    Filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#cfd6e2,endColorStr=#ddd);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorStr='#cfd6e2',endColorStr='#ddd'); /*IE6 & IE7*/  
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorStr='#cfd6e2',endColorStr='#ddd')"; /* IE8 */  
+}
+.soi-list-title>span{
+    display: inline-block;
+    box-sizing: border-box;
+    height: 100%;
+    line-height: 60px;
+    padding: 0 10px;
+    overflow-wrap: nowrap;
+    overflow: hidden;
+}
+.list-tool>select{
+    width: 100px;
+    padding: 0 10px;
+    height: 30px;
+}
+.status-bar{
+    display: inline-block;
+    width:20%;
+}
+.status-bar>span{
+    display: inline-block;
+}
+.list-item-active{
+    min-height:60px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+.list-item-active span{
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 100%;
+    line-height: 60px;
+}
+.list-item-reviewed{
+    min-height:60px;
+    border-bottom: 1px solid #ccc;
+    background-color: #ffffcc;
+}
+.list-item-reviewed span{
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 100%;
+    line-height: 60px;
+}
+.list-item-reviewed div{
+    display: inline-block;
+    line-height: 30px;
+}

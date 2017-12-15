@@ -1,0 +1,93 @@
+.gap{
+    margin-top: 20px;
+}
+.error-msg{
+    float: right;
+    color: lightcoral;
+}
+.view{
+    width:100%;
+    height:100%;
+}
+.head{
+    width: 100%;
+    height:80px;
+}
+.title-guideline{
+    position: fixed;
+    box-sizing: border-box;
+    top: 80px;
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #fff;
+    z-index: 100;
+}
+.scroll::-webkit-scrollbar {
+    width: 4px;
+}
+.scroll::-webkit-scrollbar-track {
+    background-color: #fff;
+} /* 滚动条的滑轨背景颜色 */
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: #8aafe5;
+    // background-color: #5e7a88;
+} /* 滑块颜色 */
+
+.scroll::-webkit-scrollbar-button {
+    background-color: #fff;
+} /* 滑轨两头的监听按钮颜色 */
+.after-decorate{
+	position: relative;
+	height: 60px;
+}
+.after-decorate:before{
+	position: absolute;
+	content: '';
+	top:10px;
+	right: 3px;
+	width:2px;
+	height: 50px;
+	background-color: #fff;
+}
+.color-bool{
+	position: relative;
+    height: 40px;
+    display: inline;
+    margin-right: 10px;
+    margin-left: 15px;
+}
+.color-bool1:after{
+    position: absolute;
+    content: '';
+    top: 5px;
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(30, 215, 95);
+    border-radius: 10px;
+}
+.color-bool2:after{
+    position: absolute;
+    content: '';
+    top: 5px;
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(255, 51, 51);
+    border-radius: 10px;
+}
+.list-run-bar{
+    background: -webkit-linear-gradient(left, #00dfb9, #1ed75f);
+    background: -moz-linear-gradient(left, #00dfb9, #1ed75f);
+    background: -o-linear-gradient(left, #00dfb9, #1ed75f);
+    background: -ms-linear-gradient(left, #00dfb9, #1ed75f);
+    background: linear-gradient(left, #00dfb9, #1ed75f);
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=1,startColorStr=#00dfb9,endColorStr=#1ed75f);
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorStr='#00dfb9',endColorStr='#1ed75f'); /*IE6 & IE7*/  
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorStr='#00dfb9',endColorStr='#1ed75f')"; /* IE8 */  
+    height: 100%;
+}
