@@ -132,7 +132,7 @@ Description: soi1-so4评审界面
     }
     .e-doc{
         width: 100%;
-        height: 280px;
+        height: 250px;
         border:1px solid #ccc;
     }
     .e-mov-scroll{
@@ -145,25 +145,23 @@ Description: soi1-so4评审界面
     .e-detail{
         margin-top: 20px;
         width:100%;
-        height: 220px;
+        height: 250px;
         border:1px solid #ccc;
     }
     .e-detail div{
         line-height: 40px;
-        margin-bottom: 10px;
         box-sizing: border-box;
         padding: 0 10px;
     }
     .e-detail div input{
-        float: right;
         border:1px solid #ccc;
-        height: 30px;
-        width: 70%;
+        height: 25px;
+        width: 30%;
     }
     .e-detail div textarea{
         float: right;
         border:1px solid #ccc;
-        height: 50px;
+        height: 40px;
         width: 70%;
     }
     .move-btn{
@@ -468,10 +466,35 @@ Description: soi1-so4评审界面
                        <div>
                            <span>起始页:</span>
                            <input v-model="startpage"  @keyup="checklegal('s')" type="number" min="1" :max="endpage">
+                           <span>-</span>
+                           <input v-model="endpage" @keyup="checklegal('e')" type="number" :min="startpage">
                        </div>
                        <div>
-                          <span>结束页:</span>
-                          <input v-model="endpage" @keyup="checklegal('e')" type="number" :min="startpage"> 
+                          <span>证据来源:</span>
+                           <select v-model="eviSource">
+                               <option value="a" selected>工具收集</option>
+                               <option value="b">人力收集</option>
+                           </select>
+                       </div>
+                       <div>
+                           <span>收集者对该活动的熟知程度:</span>
+                           <select v-model="eviFamiliarity">
+                               <option vlaue="a" selected>精通</option>
+                               <option vlaue="b">熟练</option>
+                               <option value="c">较熟练</option>
+                               <option value="d">基本了解</option>
+                               <option value="e">其它</option>
+                           </select>
+                       </div>
+                       <div>
+                           <span>收集者对该证据支持能力的评估:</span>
+                           <select v-model="eviSuppAccess">
+                               <option value="a" selected>强</option>
+                               <option value="b">较强</option>
+                               <option value="c">一般</option>
+                               <option value="d">弱</option>
+                               <option value="e">较弱</option>
+                           </select>
                        </div>
                        <div>
                            <span>细节说明:</span>
@@ -492,8 +515,10 @@ Description: soi1-so4评审界面
                                <span>文档类型:{{combine.evilist[0].type}}</span>
                                <span>文档名称:{{combine.evilist[0].name}}</span>
                                <span>章节:{{combine.evilist[0].chapter}}</span>
-                               <span>起始页:{{combine.evilist[0].startPage}}</span>
-                               <span>结束页:{{combine.evilist[0].endPage}}</span>
+                               <span>起始页:{{combine.evilist[0].startPage}}-{{combine.evilist[0].endPage}}</span>
+                               <span>证据来源:{{combine.evilist[0].eviSource}}</span>
+                               <span>收集者对该活动的熟知程度:{{combine.evilist[0].eviFamiliarity}}</span>
+                               <span>收集者对该证据支持能力的评估:{{combine.evilist[0].eviSuppAccess}}</span>
                                <span>细节说明:{{combine.evilist[0].details}}</span>
                            </div>
                        </div>
@@ -561,6 +586,9 @@ Description: soi1-so4评审界面
                 chapter:{},
                 startpage:1,
                 endpage:1,
+                eviSourve: 'a',
+                eviFamiliarity: 'a',
+                eviSuppAccess: 'a',
                 details:null,
                 stage:"",
                 siftId:0,
@@ -636,6 +664,9 @@ Description: soi1-so4评审界面
                 vm.chapter="";
                 vm.startpage=null;
                 vm.endpage=null;
+                vm.eviSource='a';
+                vm.eviFamiliarity='a';
+                vm.eviSuppAccess='a';
                 vm.details=null;
                 vm.removeSet=[];
                 vm.siftId=0;
@@ -840,6 +871,9 @@ Description: soi1-so4评审界面
                             chapter:vm.chapter.Section,
                             startPage:vm.startpage,
                             endPage:vm.endpage,
+                            eviSource:vm.eviSource,
+                            eviFamiliarity:vm.eviFamiliarity,
+                            eviSuppAccess:vm.eviSuppAccess,
                             details:vm.details
                         }]
                     };

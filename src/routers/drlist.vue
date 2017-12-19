@@ -124,6 +124,10 @@ Description: dr自定义添加问题清单
                  <span @click="dellist(index)" class="icon-cross"></span>
              </div>
              <div class="tool">
+                 <span>论证模式</span>
+                 <input v-model="item.Mode">
+             </div>
+             <div class="tool">
                 <span>证据项</span>
                 <span :class="item.checkSet.length?'actives':'sleeps'" @click="delAlldata(index)">删除</span>
              </div>
