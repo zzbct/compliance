@@ -479,8 +479,8 @@ Description: soi1-so4评审界面
                        <div>
                            <span>收集者对该活动的熟知程度:</span>
                            <select v-model="eviFamiliarity">
-                               <option vlaue="a" selected>精通</option>
-                               <option vlaue="b">熟练</option>
+                               <option value="a" selected>精通</option>
+                               <option value="b">熟练</option>
                                <option value="c">较熟练</option>
                                <option value="d">基本了解</option>
                                <option value="e">其它</option>
