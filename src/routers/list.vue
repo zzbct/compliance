@@ -472,14 +472,7 @@ Description: soi1-so4评审界面
                        <div>
                            <span>证据载体:</span>
                            <select v-model="carrier">
-                               <option selected>word</option>
-                               <option>advice</option>
-                               <option>table</option>
-                               <option>chart</option>
-                               <option>image</option>
-                               <option>XMI</option>
-                               <option>sound</option>
-                               <option>video</option>
+                               <option v-for="item in car" :value="item" selected>{{ item }}</option>
                            </select>
                        </div>
                        <div>
@@ -524,7 +517,7 @@ Description: soi1-so4评审界面
                        <div class="combine-text clearfix" v-for="combine in ceviForm">
                            <input v-model="removeSet" :value="combine" type="checkbox">
                            <div>
-                               <span>证据项:{{combine.eviItem}}</span>
+                               <span>目标项:{{combine.eviItem}}</span>
                                <span>文档类型:{{combine.evilist[0].type}}</span>
                                <span>文档名称:{{combine.evilist[0].name}}</span>
                                <span>章节:{{combine.evilist[0].chapter}}</span>
@@ -623,7 +616,8 @@ Description: soi1-so4评审界面
                 // 控制查看他人评审意见
                 isRefer:false,
                 x:0,
-                y:0
+                y:0,
+                car: ['word','advice','table','chart','image','XMI','sound','video']
             }
         },
         components:{
@@ -679,7 +673,7 @@ Description: soi1-so4评审界面
                 vm.chapter="";
                 vm.startpage=null;
                 vm.endpage=null;
-                vm.carrier='a';
+                vm.carrier='word';
                 vm.eviSource='a';
                 vm.eviFamiliarity='a';
                 vm.eviSuppAccess='a';
@@ -782,6 +776,7 @@ Description: soi1-so4评审界面
                      let tmp={
                       eviID:unit.eviID,
                       eviItem:unit.eviItem,
+                      idx: i,
                       evilist:[]
                     };
                     tmp.evilist.push(unit.evilist[0]);
@@ -791,6 +786,7 @@ Description: soi1-so4评审界面
                            let tmp={
                               eviID:unit.eviID,
                               eviItem:unit.eviItem,
+                              idx: i,
                               evilist:[]
                            };
                            tmp.evilist.push(unit.evilist[j]);
@@ -875,12 +871,14 @@ Description: soi1-so4评审界面
             // 添加新的关联
             moveIn:function (index) {
                 let vm=this;
+                let begin = vm.data.eviForm.length;
                 let len=vm.models.length;
                 for(let i=0;i<len;i++){
                     let unit=vm.models[i];
                     let tmp={
                         eviID:unit.eviID,
                         eviItem:unit.eviItem,
+                        idx: begin,
                         evilist:[{
                             type:vm.curType,
                             name:vm.curDoc,
@@ -903,6 +901,7 @@ Description: soi1-so4评审界面
                             continue;
                         }
                     }
+                    begin++;
                 }
                 vm.ceviForm=$.extend(true,[],vm.data.eviForm);
                 vm.finit();
@@ -915,7 +914,7 @@ Description: soi1-so4评审界面
                for(let unit of vm.removeSet){
                    let len=data.length;
                    for(let i=0;i<len;i++){
-                     if(unit.eviItem==data[i].eviItem){
+                     if(unit.eviItem==data[i].eviItem && unit.idx==data[i].idx){
                         data.$remove(data[i]);
                         len--;
                         i--;
