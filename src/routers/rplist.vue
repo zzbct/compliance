@@ -481,6 +481,19 @@ Description: 评审结果的评审界面
                            <input v-model="endpage" @keyup="checklegal('e')" type="number" :min="startpage">
                        </div>
                        <div>
+                           <span>证据载体:</span>
+                           <select v-model="carrier">
+                               <option selected>word</option>
+                               <option>advice</option>
+                               <option>table</option>
+                               <option>chart</option>
+                               <option>image</option>
+                               <option>XMI</option>
+                               <option>sound</option>
+                               <option>video</option>
+                           </select>
+                       </div>
+                       <div>
                            <span>证据来源:</span>
                            <select v-model="eviSource">
                                <option value="a" selected>工具收集</option>
@@ -527,6 +540,7 @@ Description: 评审结果的评审界面
                                <span>文档名称:{{combine.evilist[0].name}}</span>
                                <span>章节:{{combine.evilist[0].chapter}}</span>
                                <span>起始页:{{combine.evilist[0].startPage}}-{{combine.evilist[0].endPage}}</span>
+                               <span>证据载体:{{combine.evilist[0].carrier}}</span>
                                <span>证据来源:{{combine.evilist[0].eviSource}}</span>
                                <span>收集者对该活动的熟知程度:{{combine.evilist[0].eviFamiliarity}}</span>
                                <span>收集者对该证据支持能力的评估:{{combine.evilist[0].eviSuppAccess}}</span>
@@ -864,6 +878,7 @@ Description: 评审结果的评审界面
                             chapter:vm.chapter.Section,
                             startPage:vm.startpage,
                             endPage:vm.endpage,
+                            carrier:vm.carrier,
                             eviSource:vm.eviSource,
                             eviFamiliarity:vm.eviFamiliarity,
                             eviSuppAccess:vm.eviSuppAccess,
@@ -926,6 +941,7 @@ Description: 评审结果的评审界面
                 vm.chapter="";
                 vm.startpage=null;
                 vm.endpage=null;
+                vm.carrier = 'word';
                 vm.eviSource='a';
                 vm.eviFamiliarity='a';
                 vm.eviSuppAccess='a';

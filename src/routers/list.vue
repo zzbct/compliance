@@ -99,13 +99,13 @@ Description: soi1-so4评审界面
     .e-model{
         float:left;
         width:30%;
-        height:520px;
+        height:560px;
         border:1px solid #ccc;
     }
     .model-mov-scroll{
         box-sizing: border-box;
         width:100%;
-        height:480px;
+        height:520px;
         border:1px solid #ccc;
         overflow-y: auto;
     }
@@ -127,7 +127,7 @@ Description: soi1-so4评审界面
     .e-entity{
         float:left;
         width:30%;
-        height:520px;
+        height:560px;
         margin-left: 30px;
     }
     .e-doc{
@@ -145,7 +145,7 @@ Description: soi1-so4评审界面
     .e-detail{
         margin-top: 20px;
         width:100%;
-        height: 250px;
+        height: 310px;
         border:1px solid #ccc;
     }
     .e-detail div{
@@ -167,7 +167,7 @@ Description: soi1-so4评审界面
     .move-btn{
         box-sizing: border-box;
         float: left;
-        height: 480px;
+        height: 560px;
         padding: 195px 10px;
     }
     .move-btn>button{
@@ -292,12 +292,12 @@ Description: soi1-so4评审界面
         box-sizing: border-box;
         float:left;
         width:27%;
-        height:520px;
+        height:560px;
     }
     .e-combine{
         box-sizing: border-box;
         width:100%;
-        height:520px;
+        height:560px;
         padding: 10px;
         color: darkslateblue;
         border:1px solid #ccc;
@@ -326,8 +326,8 @@ Description: soi1-so4评审界面
     }
     .e-area{
         width:100%;
-        height:60px;
-        margin: 20px 0;
+        height:40px;
+        margin: 10px 0;
     }
     .e-area-text{
         float: left;
@@ -470,6 +470,19 @@ Description: soi1-so4评审界面
                            <input v-model="endpage" @keyup="checklegal('e')" type="number" :min="startpage">
                        </div>
                        <div>
+                           <span>证据载体:</span>
+                           <select v-model="carrier">
+                               <option selected>word</option>
+                               <option>advice</option>
+                               <option>table</option>
+                               <option>chart</option>
+                               <option>image</option>
+                               <option>XMI</option>
+                               <option>sound</option>
+                               <option>video</option>
+                           </select>
+                       </div>
+                       <div>
                           <span>证据来源:</span>
                            <select v-model="eviSource">
                                <option value="a" selected>工具收集</option>
@@ -516,6 +529,7 @@ Description: soi1-so4评审界面
                                <span>文档名称:{{combine.evilist[0].name}}</span>
                                <span>章节:{{combine.evilist[0].chapter}}</span>
                                <span>起始页:{{combine.evilist[0].startPage}}-{{combine.evilist[0].endPage}}</span>
+                               <span>证据载体:{{combine.evilist[0].carrier}}</span>
                                <span>证据来源:{{combine.evilist[0].eviSource}}</span>
                                <span>收集者对该活动的熟知程度:{{combine.evilist[0].eviFamiliarity}}</span>
                                <span>收集者对该证据支持能力的评估:{{combine.evilist[0].eviSuppAccess}}</span>
@@ -586,6 +600,7 @@ Description: soi1-so4评审界面
                 chapter:{},
                 startpage:1,
                 endpage:1,
+                carrier: 'word',
                 eviSourve: 'a',
                 eviFamiliarity: 'a',
                 eviSuppAccess: 'a',
@@ -664,6 +679,7 @@ Description: soi1-so4评审界面
                 vm.chapter="";
                 vm.startpage=null;
                 vm.endpage=null;
+                vm.carrier='a';
                 vm.eviSource='a';
                 vm.eviFamiliarity='a';
                 vm.eviSuppAccess='a';
@@ -871,6 +887,7 @@ Description: soi1-so4评审界面
                             chapter:vm.chapter.Section,
                             startPage:vm.startpage,
                             endPage:vm.endpage,
+                            carrier:vm.carrier,
                             eviSource:vm.eviSource,
                             eviFamiliarity:vm.eviFamiliarity,
                             eviSuppAccess:vm.eviSuppAccess,
