@@ -516,8 +516,8 @@ Description: 评审结果的评审界面
                                <option value="a" selected>强</option>
                                <option value="b">较强</option>
                                <option value="c">一般</option>
-                               <option value="d">弱</option>
-                               <option value="e">较弱</option>
+                               <option value="d">较弱</option>
+                               <option value="e">弱</option>
                            </select>
                        </div>
                        <div>
