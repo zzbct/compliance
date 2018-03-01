@@ -559,6 +559,7 @@ Description: soi1-so4评审界面
 <script>
     import hnav from '../components/hnav.vue';
     import referwindow from '../components/refers.vue';
+    import Common from '../js/common';
     import $ from 'jquery';
     import Vue from 'vue';
     module.exports = {
@@ -873,35 +874,40 @@ Description: soi1-so4评审界面
                 let vm=this;
                 let begin = vm.data.eviForm.length;
                 let len=vm.models.length;
-                for(let i=0;i<len;i++){
-                    let unit=vm.models[i];
-                    let tmp={
-                        eviID:unit.eviID,
-                        eviItem:unit.eviItem,
-                        idx: begin,
-                        evilist:[{
-                            type:vm.curType,
-                            name:vm.curDoc,
-                            chapter:vm.chapter.Section,
-                            startPage:vm.startpage,
-                            endPage:vm.endpage,
-                            carrier:vm.carrier,
-                            eviSource:vm.eviSource,
-                            eviFamiliarity:vm.eviFamiliarity,
-                            eviSuppAccess:vm.eviSuppAccess,
-                            details:vm.details
+                for(let i=0;i<len;i++) {
+                    let unit = vm.models[i];
+                    let tmp = {
+                        eviID: unit.eviID,
+                        eviItem: unit.eviItem,
+                        evilist: [{
+                            type: vm.curType,
+                            name: vm.curDoc,
+                            chapter: vm.chapter.Section,
+                            startPage: vm.startpage,
+                            endPage: vm.endpage,
+                            carrier: vm.carrier,
+                            eviSource: vm.eviSource,
+                            eviFamiliarity: vm.eviFamiliarity,
+                            eviSuppAccess: vm.eviSuppAccess,
+                            details: vm.details
                         }]
                     };
-                    vm.data.eviForm.push(tmp);
-                    let milen=vm.modelItem.length;
-                    for(let j=0;j<milen;j++){
-                        let munit=vm.modelItem[j];
-                        if(unit.eviItem==munit.eviItem){
-                            munit.isExist=1;
-                            continue;
+                    /*规避对等证据*/
+                    if (!Common.existDiff(tmp, vm.data.eviForm)) {
+                        tmp['idx'] = begin
+                        vm.data.eviForm.push(tmp);
+                        let milen=vm.modelItem.length;
+                        for(let j=0;j<milen;j++){
+                            let munit=vm.modelItem[j];
+                            if(unit.eviItem==munit.eviItem){
+                                munit.isExist=1;
+                                continue;
+                            }
                         }
+                        begin++;
+                    } else {
+                        alert('证据集中已存在相关证据，无需再次添加')
                     }
-                    begin++;
                 }
                 vm.ceviForm=$.extend(true,[],vm.data.eviForm);
                 vm.finit();
